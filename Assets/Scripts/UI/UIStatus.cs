@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIStatus : MonoBehaviour
 {
     [SerializeField] private GameObject uiStatus;
-    
+    [SerializeField] private Button statusButton;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI attackText;
     [SerializeField] private TextMeshProUGUI defenseText;
@@ -19,6 +20,15 @@ public class UIStatus : MonoBehaviour
             Debug.LogError("Character가 GameManager에서 찾을 수 없습니다.");
         }
         UpdateStatusUI();
+
+        gameObject.SetActive(false);
+
+        statusButton.onClick.AddListener(onClickStatusButton);
+    }
+
+    private void onClickStatusButton()
+    {
+        UIManager.Instance.uiMainMenu.OpenStatus();
     }
 
     public void UpdateStatusUI()

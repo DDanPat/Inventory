@@ -5,8 +5,48 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private GameObject statusPanel;
-    [SerializeField] private GameObject mainPanel;
-    
+    private static UIManager instance;
+    public static UIManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<UIManager>();
+                if (instance == null)
+                {
+                    GameObject go = new GameObject("UIManager");
+                    instance = go.AddComponent<UIManager>();
+                }
+            }
+            return instance;
+        }
+    }
+
+    [SerializeField] public GameObject mainMenuPanel;
+    [SerializeField] public GameObject statusPanel;
+    [SerializeField] public GameObject inventoryPanel;
+
+    public UIMainMenu uiMainMenu;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        uiMainMenu = mainMenuPanel.GetComponent<UIMainMenu>();
+    }
+
+    private void Start()
+    {
+        if (mainMenuPanel == null || statusPanel == null || inventoryPanel == null)
+        {
+            Debug.LogError("UI 패널들이 UIManager에 연결되지 않았습니다.");
+        }
+    }
 }
