@@ -26,8 +26,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject mainMenuPanel;
     [SerializeField] public GameObject statusPanel;
     [SerializeField] public GameObject inventoryPanel;
+    [SerializeField] public GameObject popupObjcet;
 
     public UIMainMenu uiMainMenu;
+    public UIPopup uiPopup;
     private void Awake()
     {
         if (instance == null)
@@ -40,6 +42,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
         uiMainMenu = mainMenuPanel.GetComponent<UIMainMenu>();
+        uiPopup = popupObjcet.GetComponent<UIPopup>();
     }
 
     private void Start()

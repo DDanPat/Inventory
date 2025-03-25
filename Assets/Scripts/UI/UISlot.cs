@@ -9,6 +9,7 @@ public class UISlot : MonoBehaviour
     public Button uiSlotButton;
     public TextMeshProUGUI equipText;
     public Image icon;
+    public int indexNum;
     
     private Item _item;
     public Item Item
@@ -18,6 +19,31 @@ public class UISlot : MonoBehaviour
         {
             _item = value;
             UpdateSlotUI();
+        }
+    }
+
+    private void Awake()
+    {
+        // 버튼에 클릭 이벤트 추가
+        if (uiSlotButton != null)
+        {
+            uiSlotButton.onClick.AddListener(OnSlotButtonClick);
+        }
+    }
+
+    private void OnSlotButtonClick()
+    {
+        // UIManager의 팝업 오브젝트 활성화
+        if (UIManager.Instance.popupObjcet != null)
+        {
+            UIManager.Instance.popupObjcet.SetActive(true);
+            
+            // 아이템 정보를 팝업에 전달 (아이템이 있는 경우)
+            if (_item != null && UIManager.Instance.uiPopup != null)
+            {
+                // 필요한 경우 팝업에 아이템 정보 설정
+                UIManager.Instance.uiPopup.SetItemInfo(_item);
+            }
         }
     }
 
@@ -41,4 +67,6 @@ public class UISlot : MonoBehaviour
             equipText.enabled = false;
         }
     }
+
+    
 }
