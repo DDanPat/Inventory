@@ -77,13 +77,13 @@ public class UIInventory : MonoBehaviour
     public void UpdateInventoryUI()
     {
         // 모든 슬롯 초기화
-        for (int i = 0; i < slots.Count; i++)
-        {
-            if (i < itemList.Count)
-                slots[i].UpdateSlot(itemList[i]);
-            else
-                slots[i].ClearSlot();
-        }
+        //for (int i = 0; i < slots.Count; i++)
+        //{
+        //    if (i < itemList.Count)
+        //        slots[i].UpdateSlot(itemList[i]);
+        //    else
+        //        slots[i].ClearSlot();
+        //}
 
         itemNum = itemList.Count;
         inventorySlotNum.text = $"Inventory\n[ {itemNum} / {slotCount} ]";
