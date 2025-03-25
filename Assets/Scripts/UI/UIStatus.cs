@@ -40,12 +40,4 @@ public class UIStatus : MonoBehaviour
         defenseText.text = GameManager.Instance.PlayerCharacter.Defense.ToString();
         criticalText.text = GameManager.Instance.PlayerCharacter.Critical.ToString() + "%";
     }
-
-    public void SetStatus(int health, int attack, int defense, int critical)
-    {
-        healthText.text = "체력: " + health.ToString();
-        attackText.text = "공격력: " + attack.ToString();
-        defenseText.text = "방어력: " + defense.ToString();
-        criticalText.text = "치명타: " + critical.ToString() + "%";
-    }
 }

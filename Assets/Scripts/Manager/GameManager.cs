@@ -68,11 +68,7 @@ public class GameManager : MonoBehaviour
                 statusUI.UpdateStatusUI();
             }
 
-            // Gold UI 업데이트
-            if (UIManager.Instance.uiMainMenu != null)
-            {
-                UIManager.Instance.uiMainMenu.GoldUpdate();
-            }
+            
         }
     }
 }
