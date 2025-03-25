@@ -15,12 +15,17 @@ public class UIInventory : MonoBehaviour
 
     [SerializeField] private Button inventoryButton;
 
-
     private void Start()
     {
+        slotCount = GameManager.Instance.PlayerCharacter.MaxInventorySize;
         gameObject.SetActive(false);
         inventoryButton.onClick.AddListener(onClickInventoryButton);
         InitInventoryUI();
+    }
+
+    private void OnEnable()
+    {
+        UpdateInventoryUI();
     }
 
     private void InitInventoryUI()
@@ -40,8 +45,27 @@ public class UIInventory : MonoBehaviour
             slots.Add(slot);
         }
 
-        // 아이템 개수 업데이트
-        //itemNum = itemList.Count;
+        UpdateInventoryUI();
+    }
+
+    private void UpdateInventoryUI()
+    {
+        // 모든 슬롯 초기화
+        foreach (var slot in slots)
+        {
+            slot.Item = null;
+        }
+
+        // 플레이어의 인벤토리 아이템 표시
+        var playerItems = GameManager.Instance.PlayerCharacter.Inventory;
+        itemNum = playerItems.Count;
+
+        for (int i = 0; i < playerItems.Count && i < slots.Count; i++)
+        {
+            slots[i].Item = playerItems[i];
+        }
+
+        // 인벤토리 슬롯 개수 텍스트 업데이트
         inventorySlotNum.text = $"Inventory\n[ {itemNum} / {slotCount} ]";
     }
 
@@ -49,6 +73,4 @@ public class UIInventory : MonoBehaviour
     {
         UIManager.Instance.uiMainMenu.OpenInventory();
     }
-
-    
 }

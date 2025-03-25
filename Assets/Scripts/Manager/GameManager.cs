@@ -58,6 +58,12 @@ public class GameManager : MonoBehaviour
         playerCharacter.Critical = 5;
         playerCharacter.Gold = 1000;
 
+        // 인벤토리 초기화
+        playerCharacter.Inventory.Clear();
+
+        // 기본 아이템 설정
+        BaseItemSet();
+
         // UI 업데이트
         if (UIManager.Instance != null)
         {
@@ -67,8 +73,45 @@ public class GameManager : MonoBehaviour
             {
                 statusUI.UpdateStatusUI();
             }
+        }
+    }
 
-            
+    private void BaseItemSet()
+    {
+        // 기본 무기 로드 및 추가
+        Item sword = Resources.Load<Item>("ItemData/Sword");
+        if (sword != null)
+        {
+            Item swordInstance = Instantiate(sword);
+            playerCharacter.AddItem(swordInstance);
+        }
+        else
+        {
+            Debug.LogError("기본 검을 찾을 수 없습니다: ItemData/Sword");
+        }
+
+        // 기본 방어구 로드 및 추가
+        Item armor = Resources.Load<Item>("ItemData/Helmet");
+        if (armor != null)
+        {
+            Item armorInstance = Instantiate(armor);
+            playerCharacter.AddItem(armorInstance);
+        }
+        else
+        {
+            Debug.LogError("기본 방어구를 찾을 수 없습니다: ItemData/Helmet");
+        }
+
+        // 기본 포션 로드 및 추가
+        Item potion = Resources.Load<Item>("ItemData/Potion");
+        if (potion != null)
+        {
+            Item potionInstance = Instantiate(potion);
+            playerCharacter.AddItem(potionInstance);
+        }
+        else
+        {
+            Debug.LogError("체력 포션을 찾을 수 없습니다: ItemData/Potion");
         }
     }
 }

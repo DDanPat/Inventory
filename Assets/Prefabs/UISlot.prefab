@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 6372462409371191162}
   - component: {fileID: 3377255383642619349}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BGImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 5878332371505502895}
   - component: {fileID: 7737240539297402163}
   m_Layer: 5
-  m_Name: Image
+  m_Name: icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiSlotButton: {fileID: 274171609262289150}
   equipText: {fileID: 5416952513047012655}
-  icon: {fileID: 3377255383642619349}
+  icon: {fileID: 7737240539297402163}
 --- !u!114 &274171609262289150
 MonoBehaviour:
   m_ObjectHideFlags: 0

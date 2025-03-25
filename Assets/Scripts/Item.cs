@@ -20,6 +20,8 @@ public class Item : ScriptableObject
     public ItemType type;
     public Sprite icon;
 
+    public bool isEquip;
+
     [Header("Stacking")]
     public bool canStack;
     public int maxStackAmount;
