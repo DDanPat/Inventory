@@ -51,7 +51,7 @@ public class UISlot : MonoBehaviour
                 // 필요한 경우 팝업에 아이템 정보 설정
                 if (slotType == SlotType.Inventory)
                     UIManager.Instance.uiPopup.SetItemInfo(_item, slotType);
-                else
+                else if (slotType == SlotType.Shop)
                     UIManager.Instance.uiPopup.SetShopInfo(_item, slotType);
             }
         }
