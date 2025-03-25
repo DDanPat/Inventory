@@ -35,13 +35,15 @@ public class Player : Character
         return false;
     }
 
-    public void Equip(int slotNum)
+    public void Equip(Item item)
     {
-        inventory[slotNum].isEquip = true;
+        item.isEquip = true;
+        UIManager.Instance.uiInventory.UpdateInventoryUI();
     }
 
-    public void UnEuip(int slotNum)
+    public void UnEuip(Item item)
     {
-        inventory[slotNum].isEquip = false;
+        item.isEquip = false;
+        UIManager.Instance.uiInventory.UpdateInventoryUI();
     }
 }

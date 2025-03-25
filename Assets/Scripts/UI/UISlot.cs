@@ -47,7 +47,7 @@ public class UISlot : MonoBehaviour
         }
     }
 
-    private void UpdateSlotUI()
+    public void UpdateSlotUI()
     {
         if (_item != null)
         {

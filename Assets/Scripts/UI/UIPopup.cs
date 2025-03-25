@@ -25,11 +25,17 @@ public class UIPopup : MonoBehaviour
 
     private void applyButtonSet()
     {
-        if (currentItem != null)
+        if (currentItem != null && currentItem.isEquip == false)
         {
             // 아이템 장착 로직 구현
-            // GameManager.Instance.PlayerCharacter.Equip(currentItem);
+            GameManager.Instance.PlayerCharacter.Equip(currentItem);
             Debug.Log($"{currentItem.displayName} 아이템 적용");
+        }
+        else if(currentItem != null && currentItem.isEquip == true)
+        {
+            // 아이템 장착 로직 구현
+            GameManager.Instance.PlayerCharacter.UnEuip(currentItem);
+            Debug.Log($"{currentItem.displayName} 아이템 해제");
         }
         UIManager.Instance.popupObjcet.SetActive(false);
     }

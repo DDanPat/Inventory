@@ -49,7 +49,7 @@ public class UIInventory : MonoBehaviour
         UpdateInventoryUI();
     }
 
-    private void UpdateInventoryUI()
+    public void UpdateInventoryUI()
     {
         // 모든 슬롯 초기화
         foreach (var slot in slots)
@@ -64,10 +64,12 @@ public class UIInventory : MonoBehaviour
         for (int i = 0; i < playerItems.Count && i < slots.Count; i++)
         {
             slots[i].Item = playerItems[i];
+            slots[i].UpdateSlotUI();
         }
 
         // 인벤토리 슬롯 개수 텍스트 업데이트
         inventorySlotNum.text = $"Inventory\n[ {itemNum} / {slotCount} ]";
+
     }
 
     private void onClickInventoryButton()

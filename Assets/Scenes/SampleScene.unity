@@ -3392,8 +3392,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   applyButton: {fileID: 1237249555}
-  CancelButton: {fileID: 558763029}
+  cancelButton: {fileID: 558763029}
   popupText: {fileID: 489758890}
+  itemNameText: {fileID: 0}
+  itemDescriptionText: {fileID: 0}
+  itemIconImage: {fileID: 0}
 --- !u!1 &1303397954
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject inventoryPanel;
     [SerializeField] public GameObject popupObjcet;
 
+    public UIInventory uiInventory;
     public UIMainMenu uiMainMenu;
     public UIPopup uiPopup;
     private void Awake()
@@ -43,6 +44,7 @@ public class UIManager : MonoBehaviour
         }
         uiMainMenu = mainMenuPanel.GetComponent<UIMainMenu>();
         uiPopup = popupObjcet.GetComponent<UIPopup>();
+        uiInventory = inventoryPanel.GetComponent<UIInventory>();
     }
 
     private void Start()

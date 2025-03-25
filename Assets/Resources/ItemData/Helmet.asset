@@ -16,5 +16,10 @@ MonoBehaviour:
   description: "\uCD08\uBCF4\uC790\uC5D0\uAC8C \uC9C0\uAE09\uB418\uB294 \uD22C\uAD6C\uC774\uB2E4"
   type: 1
   icon: {fileID: 4443029923271295114, guid: 6732a03145e8bd0408862257da102895, type: 3}
+  isEquip: 0
   canStack: 0
   maxStackAmount: 0
+  consumables: []
+  weaponValue:
+  - attack: 0
+    defense: 10

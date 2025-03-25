@@ -10,6 +10,17 @@ public enum ItemType
     Potion
 }
 
+[System.Serializable]
+public class ItemDataConsumable
+{
+    public float value;
+}
+[System.Serializable]
+public class ItemDataWeapon
+{
+    public float attack;
+    public float defense;
+}
 
 [CreateAssetMenu(fileName ="Item", menuName = "New Item")]
 public class Item : ScriptableObject
@@ -25,4 +36,10 @@ public class Item : ScriptableObject
     [Header("Stacking")]
     public bool canStack;
     public int maxStackAmount;
+
+    [Header("Consumable")]
+    public ItemDataConsumable[] consumables;
+
+    [Header("Weapons")]
+    public ItemDataWeapon[] weaponValue;
 }
