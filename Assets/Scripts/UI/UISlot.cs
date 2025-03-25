@@ -11,7 +11,7 @@ public class UISlot : MonoBehaviour
     public Image icon;
     public int indexNum;
     
-    private Item _item;
+    [SerializeField]private Item _item;
     public Item Item
     {
         get => _item;
@@ -34,7 +34,7 @@ public class UISlot : MonoBehaviour
     private void OnSlotButtonClick()
     {
         // UIManager의 팝업 오브젝트 활성화
-        if (UIManager.Instance.popupObjcet != null)
+        if (UIManager.Instance.popupObjcet != null && _item != null)
         {
             UIManager.Instance.popupObjcet.SetActive(true);
             

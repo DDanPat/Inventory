@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
 
     public UIInventory uiInventory;
     public UIMainMenu uiMainMenu;
+    public UIStatus uiStatus;
     public UIPopup uiPopup;
     private void Awake()
     {
@@ -45,6 +46,7 @@ public class UIManager : MonoBehaviour
         uiMainMenu = mainMenuPanel.GetComponent<UIMainMenu>();
         uiPopup = popupObjcet.GetComponent<UIPopup>();
         uiInventory = inventoryPanel.GetComponent<UIInventory>();
+        uiStatus = statusPanel.GetComponent<UIStatus>();
     }
 
     private void Start()

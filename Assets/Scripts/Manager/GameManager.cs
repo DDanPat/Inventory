@@ -102,6 +102,18 @@ public class GameManager : MonoBehaviour
             Debug.LogError("기본 방어구를 찾을 수 없습니다: ItemData/Helmet");
         }
 
+        // 기본 방패패 로드 및 추가
+        Item shield = Resources.Load<Item>("ItemData/Shield");
+        if (armor != null)
+        {
+            Item shieldInstance = Instantiate(shield);
+            playerCharacter.AddItem(shieldInstance);
+        }
+        else
+        {
+            Debug.LogError("기본 방어구를 찾을 수 없습니다: ItemData/Helmet");
+        }
+
         // 기본 포션 로드 및 추가
         Item potion = Resources.Load<Item>("ItemData/Potion");
         if (potion != null)

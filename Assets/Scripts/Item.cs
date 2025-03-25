@@ -10,6 +10,13 @@ public enum ItemType
     Potion
 }
 
+public enum StatusType
+{
+    Attack,
+    Defense,
+    Health,
+}
+
 [System.Serializable]
 public class ItemDataConsumable
 {
@@ -18,8 +25,8 @@ public class ItemDataConsumable
 [System.Serializable]
 public class ItemDataWeapon
 {
-    public float attack;
-    public float defense;
+    public StatusType statusType;
+    public int value;
 }
 
 [CreateAssetMenu(fileName ="Item", menuName = "New Item")]

@@ -21,6 +21,7 @@ public class UIMainMenu : MonoBehaviour
     {
         UIManager.Instance.statusPanel.SetActive(false);
         UIManager.Instance.inventoryPanel.SetActive(false);
+        UIManager.Instance.popupObjcet.SetActive(false);
         backButton.gameObject.SetActive(false);
     }
 
