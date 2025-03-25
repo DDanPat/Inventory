@@ -1401,6 +1401,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backButton: {fileID: 961212660}
   goldText: {fileID: 862072906}
+  name: {fileID: 1164024725}
+  level: {fileID: 2055312557}
 --- !u!1 &753035191
 GameObject:
   m_ObjectHideFlags: 0
