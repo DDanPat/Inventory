@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: "\uB9DD\uCE58"
   description: "\uACF5\uACA9\uB825 20\uC744 \uC62C\uB824\uC900\uB2E4"
+  gold: 1500
   type: 0
-  icon: {fileID: 6674386295937086461, guid: 7abd59d488ec3484089d5f418816dbdb, type: 3}
+  icon: {fileID: 5393448996881579246, guid: c83fa2ac472c64145a29bad9c05a9a50, type: 3}
   isEquip: 0
   canStack: 0
   maxStackAmount: 0

@@ -4,13 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+public enum SlotType
+{
+    Inventory,
+    Shop
+}
+
 public class UISlot : MonoBehaviour
 {
     public Button uiSlotButton;
     public TextMeshProUGUI equipText;
     public Image icon;
     public int indexNum;
-    
+    public SlotType slotType;
+
     [SerializeField]private Item _item;
     public Item Item
     {
@@ -42,7 +49,10 @@ public class UISlot : MonoBehaviour
             if (_item != null && UIManager.Instance.uiPopup != null)
             {
                 // 필요한 경우 팝업에 아이템 정보 설정
-                UIManager.Instance.uiPopup.SetItemInfo(_item);
+                if (slotType == SlotType.Inventory)
+                    UIManager.Instance.uiPopup.SetItemInfo(_item, slotType);
+                else
+                    UIManager.Instance.uiPopup.SetShopInfo(_item, slotType);
             }
         }
     }

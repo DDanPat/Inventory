@@ -35,6 +35,7 @@ public class Item : ScriptableObject
     [Header("Info")]
     public string displayName;
     public string description;
+    public int gold;
     public ItemType type;
     public Sprite icon;
 

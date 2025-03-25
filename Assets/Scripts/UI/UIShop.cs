@@ -39,6 +39,7 @@ public class UIShop : MonoBehaviour
             UISlot slot = Instantiate(slotPrefab, slotParent);
             slots.Add(slot);
             slots[i].indexNum = i;
+            slots[i].slotType = SlotType.Shop;
         }
 
         UpdateShopUI();

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: "\uD3EC\uC158"
   description: "\uCCB4\uB825 20 \uD68C\uBCF5\uC2DC\uCF1C\uC900\uB2E4."
+  gold: 1000
   type: 3
   icon: {fileID: -1401110133662507876, guid: 9035a2602b4b6774fb8c30b4f5872fca, type: 3}
   isEquip: 0

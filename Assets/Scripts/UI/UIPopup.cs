@@ -11,9 +11,9 @@ public class UIPopup : MonoBehaviour
     [SerializeField] private Button cancelButton;
     [SerializeField] private TextMeshProUGUI popupText;
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
-    [SerializeField] private Image itemIconImage;
 
     private Item currentItem;
+    private SlotType selectSlotType;
 
     private void Start()
     {
@@ -23,6 +23,20 @@ public class UIPopup : MonoBehaviour
     }
 
     private void applyButtonSet()
+    {
+        switch (selectSlotType)
+        {
+            case SlotType.Inventory:
+                InventorySet();
+                break;
+            case SlotType.Shop:
+                ShopSet();
+                break;
+        }
+        UIManager.Instance.popupObjcet.SetActive(false);
+    }
+
+    private void InventorySet()
     {
         if (currentItem != null)
         {
@@ -41,8 +55,17 @@ public class UIPopup : MonoBehaviour
                     break;
             }
         }
-        
-        UIManager.Instance.popupObjcet.SetActive(false);
+    }
+    private void ShopSet()
+    {
+        if (currentItem.gold <= GameManager.Instance.PlayerCharacter.Gold)
+        {
+            Item newItem = Instantiate(currentItem);
+            GameManager.Instance.PlayerCharacter.AddItem(newItem);
+            UIManager.Instance.uiInventory.UpdateInventoryUI();
+            GameManager.Instance.PlayerCharacter.Gold -= currentItem.gold;
+            UIManager.Instance.uiMainMenu.GoldUpdate();
+        }
     }
 
     private void PotionSet()
@@ -54,16 +77,28 @@ public class UIPopup : MonoBehaviour
     {
         if (currentItem != null && currentItem.isEquip == false)
         {
-            // 아이템 장착 로직 구현
+            // 같은 타입의 장착된 아이템 찾기
+            Item equippedItem = GameManager.Instance.PlayerCharacter.Inventory.Find(item => 
+                item.isEquip && item.type == currentItem.type);
+
+            // 같은 타입의 아이템이 이미 장착되어 있다면 해제
+            if (equippedItem != null)
+            {
+                GameManager.Instance.PlayerCharacter.UnEuip(equippedItem);
+                Debug.Log($"{equippedItem.displayName} 아이템 해제");
+            }
+
+            // 새로운 아이템 장착
             GameManager.Instance.PlayerCharacter.Equip(currentItem);
             Debug.Log($"{currentItem.displayName} 아이템 적용");
         }
         else if(currentItem != null && currentItem.isEquip == true)
         {
-            // 아이템 장착 로직 구현
+            // 아이템 장착 해제 로직
             GameManager.Instance.PlayerCharacter.UnEuip(currentItem);
             Debug.Log($"{currentItem.displayName} 아이템 해제");
         }
+        UIManager.Instance.uiInventory.UpdateInventoryUI();
     }
 
 
@@ -72,55 +107,19 @@ public class UIPopup : MonoBehaviour
         UIManager.Instance.popupObjcet.SetActive(false);
     }
 
-    public void SetItemInfo(Item item)
+    public void SetItemInfo(Item item, SlotType slotType)
     {
+        selectSlotType = slotType;
         currentItem = item;
-        
-        if (item != null)
-        {
-            // 아이템 정보 팝업에 표시
-                
-            if (itemDescriptionText != null && currentItem.isEquip == false)
-            {
-                itemDescriptionText.text = item.description;
-            }
-                
-            if (itemIconImage != null)
-            {
-                itemIconImage.sprite = item.icon;
-                itemIconImage.enabled = true;
-            }
-            
-            // 아이템 타입에 따른 팝업 내용 설정
-            string actionText = item.isEquip ? "해제" : "장착";
-            if (item.type == ItemType.Potion)
-            {
-                actionText = "사용";
-            }
-                
-            // 팝업 텍스트 설정
-            if (popupText != null)
-            {
-                popupText.text = $"{item.displayName}을(를) {actionText}하시겠습니까?";
-            }
-        }
-        else
-        {
-            // 아이템이 없는 경우 기본 상태로 초기화
-            if (itemDescriptionText != null)
-            {
-                itemDescriptionText.text = "";
-            }
-                
-            if (itemIconImage != null)
-            {
-                itemIconImage.enabled = false;
-            }
-                
-            if (popupText != null)
-            {
-                popupText.text = "선택된 아이템이 없습니다.";
-            }
-        }
+        string itemStat = item.isEquip? "해제" : "장착";
+        popupText.text = $"{item.displayName}을[를] {itemStat}하시겠습니까?";
+        itemDescriptionText.text = item.description; 
+    }
+    public void SetShopInfo(Item item, SlotType slotType)
+    {
+        selectSlotType = slotType;
+        currentItem = item;
+        popupText.text = $"{item.displayName}을[를] 구매하시겠습니까?";
+        itemDescriptionText.text = $"{item.description}\n{item.gold}G"; 
     }
 }
