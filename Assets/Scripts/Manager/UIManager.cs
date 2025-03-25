@@ -27,11 +27,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject statusPanel;
     [SerializeField] public GameObject inventoryPanel;
     [SerializeField] public GameObject popupObjcet;
+    [SerializeField] public GameObject shopPanel;
 
     public UIInventory uiInventory;
     public UIMainMenu uiMainMenu;
     public UIStatus uiStatus;
     public UIPopup uiPopup;
+    public UIShop uiShop;
     private void Awake()
     {
         if (instance == null)
@@ -47,6 +49,7 @@ public class UIManager : MonoBehaviour
         uiPopup = popupObjcet.GetComponent<UIPopup>();
         uiInventory = inventoryPanel.GetComponent<UIInventory>();
         uiStatus = statusPanel.GetComponent<UIStatus>();
+        uiShop = shopPanel.GetComponent<UIShop>();
     }
 
     private void Start()

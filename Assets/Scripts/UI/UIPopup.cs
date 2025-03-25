@@ -48,7 +48,7 @@ public class UIPopup : MonoBehaviour
 
     private void PotionSet()
     {
-
+        
     }
 
     private void EquipmentSet()

@@ -4,26 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIInventory : MonoBehaviour
+public class UIShop : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI inventorySlotNum;
     private int itemNum = 0;
     [SerializeField] private UISlot slotPrefab;
     [SerializeField] private Transform slotParent;
     [SerializeField] private List<UISlot> slots = new List<UISlot>();
     [SerializeField] private int slotCount;
 
-    [SerializeField] private Button inventoryButton;
+    [SerializeField] private Button shopButton;
 
     private void Start()
     {
-        slotCount = GameManager.Instance.PlayerCharacter.MaxInventorySize;
+        slotCount = 21;
         gameObject.SetActive(false);
-        inventoryButton.onClick.AddListener(onClickInventoryButton);
-        InitInventoryUI();
+        shopButton.onClick.AddListener(onClickshopButton);
+        InitShopUI();
     }
 
-    private void InitInventoryUI()
+    private void InitShopUI()
     {
         // 기존 슬롯들 제거
         foreach (var slot in slots)
@@ -41,10 +40,10 @@ public class UIInventory : MonoBehaviour
             slots[i].indexNum = i;
         }
 
-        UpdateInventoryUI();
+        UpdateShopUI();
     }
 
-    public void UpdateInventoryUI()
+    public void UpdateShopUI()
     {
         // 모든 슬롯 초기화
         foreach (var slot in slots)
@@ -52,23 +51,12 @@ public class UIInventory : MonoBehaviour
             slot.Item = null;
         }
 
-        // 플레이어의 인벤토리 아이템 표시
-        var playerItems = GameManager.Instance.PlayerCharacter.Inventory;
-        itemNum = playerItems.Count;
-
-        for (int i = 0; i < playerItems.Count && i < slots.Count; i++)
-        {
-            slots[i].Item = playerItems[i];
-            slots[i].UpdateSlotUI();
-        }
-
-        // 인벤토리 슬롯 개수 텍스트 업데이트
-        inventorySlotNum.text = $"Inventory\n[ {itemNum} / {slotCount} ]";
+        
 
     }
 
-    private void onClickInventoryButton()
+    private void onClickshopButton()
     {
-        UIManager.Instance.uiMainMenu.OpenInventory();
+        UIManager.Instance.uiMainMenu.OpenShop();
     }
 }

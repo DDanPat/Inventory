@@ -22,6 +22,7 @@ public class UIMainMenu : MonoBehaviour
         UIManager.Instance.statusPanel.SetActive(false);
         UIManager.Instance.inventoryPanel.SetActive(false);
         UIManager.Instance.popupObjcet.SetActive(false);
+        UIManager.Instance.shopPanel.SetActive(false);
         backButton.gameObject.SetActive(false);
     }
 
@@ -34,6 +35,12 @@ public class UIMainMenu : MonoBehaviour
     public void OpenInventory()
     {
         UIManager.Instance.inventoryPanel.SetActive(true);
+        backButton.gameObject.SetActive(true);
+    }
+
+    public void OpenShop()
+    {
+        UIManager.Instance.shopPanel.SetActive(true);
         backButton.gameObject.SetActive(true);
     }
 
