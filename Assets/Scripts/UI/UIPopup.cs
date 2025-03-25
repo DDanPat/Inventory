@@ -24,19 +24,21 @@ public class UIPopup : MonoBehaviour
 
     private void applyButtonSet()
     {
+        bool apply = false;
         switch (selectSlotType)
         {
             case SlotType.Inventory:
-                InventorySet();
+                apply = InventorySet();
                 break;
             case SlotType.Shop:
-                ShopSet();
+                apply = ShopSet();
                 break;
         }
-        UIManager.Instance.popupObjcet.SetActive(false);
+        if (apply) UIManager.Instance.popupObjcet.SetActive(false);
+        else return;
     }
 
-    private void InventorySet()
+    private bool InventorySet()
     {
         if (currentItem != null)
         {
@@ -50,13 +52,12 @@ public class UIPopup : MonoBehaviour
                 case ItemType.Shield:
                     EquipmentSet();
                     break;
-                default:
-                    Debug.Log($"처리되지 않은 아이템 타입: {currentItem.type}");
-                    break;
             }
+            return true;
         }
+        else return false;
     }
-    private void ShopSet()
+    private bool ShopSet()
     {
         if (currentItem.gold <= GameManager.Instance.PlayerCharacter.Gold)
         {
@@ -65,6 +66,12 @@ public class UIPopup : MonoBehaviour
             UIManager.Instance.uiInventory.UpdateInventoryUI();
             GameManager.Instance.PlayerCharacter.Gold -= currentItem.gold;
             UIManager.Instance.uiMainMenu.GoldUpdate();
+            return true;
+        }
+        else
+        {
+            popupText.text = "골드가 부족합니다.";
+            return false;
         }
     }
 
