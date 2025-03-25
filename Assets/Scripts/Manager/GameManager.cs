@@ -65,15 +65,7 @@ public class GameManager : MonoBehaviour
         BaseItemSet();
 
         // UI 업데이트
-        if (UIManager.Instance != null)
-        {
-            // Status UI 업데이트
-            UIStatus statusUI = UIManager.Instance.statusPanel.GetComponent<UIStatus>();
-            if (statusUI != null)
-            {
-                statusUI.UpdateStatusUI();
-            }
-        }
+        UIManager.Instance.uiStatus.UpdateStatusUI();
     }
 
     private void BaseItemSet()
@@ -124,6 +116,23 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.LogError("체력 포션을 찾을 수 없습니다: ItemData/Potion");
+        }
+    }
+
+    private void Update()
+    {
+        // A키를 누르면 골드 10 감소
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            playerCharacter.Health -= 10;
+            UIManager.Instance.uiStatus.UpdateStatusUI();
+        }
+
+        // S키를 누르면 골드 10000 증가
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            playerCharacter.Gold += 10000;
+            UIManager.Instance.uiMainMenu.GoldUpdate();
         }
     }
 }

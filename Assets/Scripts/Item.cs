@@ -20,7 +20,7 @@ public enum StatusType
 [System.Serializable]
 public class ItemDataConsumable
 {
-    public float value;
+    public int value;
 }
 [System.Serializable]
 public class ItemDataWeapon
@@ -46,7 +46,7 @@ public class Item : ScriptableObject
     public int maxStackAmount;
 
     [Header("Consumable")]
-    public ItemDataConsumable[] consumables;
+    public ItemDataConsumable consumables;
 
     [Header("Weapons")]
     public ItemDataWeapon[] weaponValue;

@@ -77,7 +77,7 @@ public class UIPopup : MonoBehaviour
 
     private void PotionSet()
     {
-        
+        GameManager.Instance.PlayerCharacter.UseConsumables(currentItem);
     }
 
     private void EquipmentSet()

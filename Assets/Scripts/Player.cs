@@ -94,4 +94,12 @@ public class Player : Character
         }
         UIManager.Instance.uiStatus.UpdateStatusUI();
     }
+
+    public void UseConsumables(Item item)
+    {
+        Health += item.consumables.value;
+        RemoveItem(item);
+        UIManager.Instance.uiInventory.UpdateInventoryUI();
+        UIManager.Instance.uiStatus.UpdateStatusUI();
+    }
 }
