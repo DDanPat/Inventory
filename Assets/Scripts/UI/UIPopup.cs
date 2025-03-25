@@ -10,7 +10,6 @@ public class UIPopup : MonoBehaviour
     [SerializeField] private Button applyButton;
     [SerializeField] private Button cancelButton;
     [SerializeField] private TextMeshProUGUI popupText;
-    [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
     [SerializeField] private Image itemIconImage;
 
@@ -80,12 +79,8 @@ public class UIPopup : MonoBehaviour
         if (item != null)
         {
             // 아이템 정보 팝업에 표시
-            if (itemNameText != null)
-            {
-                itemNameText.text = item.displayName;
-            }
                 
-            if (itemDescriptionText != null)
+            if (itemDescriptionText != null && currentItem.isEquip == false)
             {
                 itemDescriptionText.text = item.description;
             }
@@ -108,21 +103,10 @@ public class UIPopup : MonoBehaviour
             {
                 popupText.text = $"{item.displayName}을(를) {actionText}하시겠습니까?";
             }
-                
-            // 적용 버튼 활성화
-            if (applyButton != null)
-            {
-                applyButton.gameObject.SetActive(true);
-            }
         }
         else
         {
             // 아이템이 없는 경우 기본 상태로 초기화
-            if (itemNameText != null)
-            {
-                itemNameText.text = "";
-            }
-                
             if (itemDescriptionText != null)
             {
                 itemDescriptionText.text = "";
@@ -136,12 +120,6 @@ public class UIPopup : MonoBehaviour
             if (popupText != null)
             {
                 popupText.text = "선택된 아이템이 없습니다.";
-            }
-                
-            // 적용 버튼 비활성화
-            if (applyButton != null)
-            {
-                applyButton.gameObject.SetActive(false);
             }
         }
     }
