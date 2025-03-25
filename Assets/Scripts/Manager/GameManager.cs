@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private Character playerCharacter;
-    public Character PlayerCharacter => playerCharacter;
+    private Player playerCharacter;
+    public Player PlayerCharacter => playerCharacter;
 
     private void Awake()
     {
@@ -37,11 +37,42 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        playerCharacter = FindObjectOfType<Character>();
-        if (playerCharacter == null)
-        {
-            Debug.LogError("Character가 씬에 존재하지 않습니다.");
-        }
+        SetData();
     }
 
+    public void SetData()
+    {
+        // 플레이어가 없다면 생성
+        if (playerCharacter == null)
+        {
+            GameObject playerObj = new GameObject("Player");
+            playerCharacter = playerObj.AddComponent<Player>();
+        }
+
+        // 기본 스탯 설정
+        playerCharacter.name = "티라노";
+        playerCharacter.level = 0;
+        playerCharacter.Health = 100;
+        playerCharacter.Attack = 10;
+        playerCharacter.Defense = 5;
+        playerCharacter.Critical = 5;
+        playerCharacter.Gold = 1000;
+
+        // UI 업데이트
+        if (UIManager.Instance != null)
+        {
+            // Status UI 업데이트
+            UIStatus statusUI = UIManager.Instance.statusPanel.GetComponent<UIStatus>();
+            if (statusUI != null)
+            {
+                statusUI.UpdateStatusUI();
+            }
+
+            // Gold UI 업데이트
+            if (UIManager.Instance.uiMainMenu != null)
+            {
+                UIManager.Instance.uiMainMenu.GoldUpdate();
+            }
+        }
+    }
 }

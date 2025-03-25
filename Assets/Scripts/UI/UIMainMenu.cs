@@ -5,12 +5,17 @@ public class UIMainMenu : MonoBehaviour
 {
     [SerializeField] private Button backButton;
     [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] private TextMeshProUGUI name;
+    [SerializeField] private TextMeshProUGUI level;
+
     private void Start()
     {
         backButton.onClick.AddListener(OpenMainMenu);
         backButton.gameObject.SetActive(false);
 
+        name.text = GameManager.Instance.PlayerCharacter.name;
         GoldUpdate();
+        LevelUpdate();
     }
     public void OpenMainMenu()
     {
@@ -35,6 +40,10 @@ public class UIMainMenu : MonoBehaviour
     {
         int gold = GameManager.Instance.PlayerCharacter.Gold;
         goldText.text = gold.ToString("N0");
+    }
+    public void LevelUpdate()
+    {
+        level.text = "Lv. " + GameManager.Instance.PlayerCharacter.level.ToString();
     }
 
     private void Update()
