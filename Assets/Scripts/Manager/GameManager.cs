@@ -135,5 +135,10 @@ public class GameManager : MonoBehaviour
             playerCharacter.Gold += 10000;
             UIManager.Instance.uiMainMenu.GoldUpdate();
         }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            playerCharacter.LevelUP();
+        }
     }
 }

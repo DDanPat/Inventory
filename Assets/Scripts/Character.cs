@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [Range(0, 100)][SerializeField] private int health;
-    public int Health { get => health; set => health = Mathf.Clamp(value, 0, 100); }
+    [Range(0, 1000)][SerializeField] private int health;
+    public int Health { get => health; set => health = Mathf.Clamp(value, 0, 1000); }
 
     [Range(1,100)][SerializeField] private int attack;
     public int Attack { get => attack; set => attack = Mathf.Clamp(value, 1 ,100); }

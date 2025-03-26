@@ -8,6 +8,9 @@ public class UIMedal : MonoBehaviour
     [SerializeField] private Button openMedalButton;
     [SerializeField] private Button closeMedalButton;
     [SerializeField] private GameObject medalSelectPanel;
+    public Image medalIcon;
+
+
 
     private void Start()
     {
@@ -22,16 +25,10 @@ public class UIMedal : MonoBehaviour
         closeMedalButton.gameObject.SetActive(true);
     }
 
-    private void CloseMedalSelectPanel()
+    public void CloseMedalSelectPanel()
     {
         medalSelectPanel.SetActive(false);
         closeMedalButton.gameObject.SetActive(false);
     }
 
-
-    private void SelectMedal()
-    {
-        GameManager.Instance.PlayerCharacter.medal = "";
-        UIManager.Instance.uiMainMenu.MedalUpdate();
-    }
 }

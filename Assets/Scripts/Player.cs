@@ -104,4 +104,14 @@ public class Player : Character
         UIManager.Instance.uiInventory.UpdateInventoryUI();
         UIManager.Instance.uiStatus.UpdateStatusUI();
     }
+
+    public void LevelUP()
+    {
+        level++;
+        Attack += 5;
+        Defense += 5;
+        Health += 5;
+        UIManager.Instance.uiStatus.UpdateStatusUI();
+        UIManager.Instance.uiMainMenu.LevelUpdate();
+    }
 }
