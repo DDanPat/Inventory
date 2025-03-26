@@ -1,6 +1,6 @@
 <div align="center">
 
-# 
+# Inventory
 스파르타 내일배움캠프에서 지금까지 배웠던 Unity 기능을 복습하기 위해 진행한 프로젝트입니다.
 
 </div>
