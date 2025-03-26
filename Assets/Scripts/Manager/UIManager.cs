@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
     public UIStatus uiStatus;
     public UIPopup uiPopup;
     public UIShop uiShop;
+    public UIMedal uiMedal;
     private void Awake()
     {
         if (instance == null)
@@ -50,6 +51,7 @@ public class UIManager : MonoBehaviour
         uiInventory = inventoryPanel.GetComponent<UIInventory>();
         uiStatus = statusPanel.GetComponent<UIStatus>();
         uiShop = shopPanel.GetComponent<UIShop>();
+        uiMedal = mainMenuPanel.GetComponent<UIMedal>();
     }
 
     private void Start()

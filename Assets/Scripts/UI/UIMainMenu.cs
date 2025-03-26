@@ -5,6 +5,8 @@ public class UIMainMenu : MonoBehaviour
 {
     [SerializeField] private Button backButton;
     [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] private GameObject medalObject;
+    [SerializeField] private TextMeshProUGUI medal;
     [SerializeField] private TextMeshProUGUI name;
     [SerializeField] private TextMeshProUGUI level;
 
@@ -16,6 +18,7 @@ public class UIMainMenu : MonoBehaviour
         name.text = GameManager.Instance.PlayerCharacter.name;
         GoldUpdate();
         LevelUpdate();
+        MedalUpdate();
     }
     public void OpenMainMenu()
     {
@@ -54,12 +57,9 @@ public class UIMainMenu : MonoBehaviour
         level.text = "Lv. " + GameManager.Instance.PlayerCharacter.level.ToString();
     }
 
-    private void Update()
+    public void MedalUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            GameManager.Instance.PlayerCharacter.Gold += 1101001000;
-            GoldUpdate();
-        }
+        medal.text = GameManager.Instance.PlayerCharacter.medal;
     }
+
 }

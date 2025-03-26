@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
         playerCharacter.Defense = 5;
         playerCharacter.Critical = 5;
         playerCharacter.Gold = 1000;
+        playerCharacter.medal = "코딩뉴비";
 
         // 인벤토리 초기화
         playerCharacter.Inventory.Clear();

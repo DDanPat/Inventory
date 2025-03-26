@@ -6,6 +6,8 @@ public class Player : Character
 {
     public string name;
     public int level;
+    public string medal;
+
     
     [SerializeField] private List<Item> inventory = new List<Item>();
     public List<Item> Inventory => inventory;
